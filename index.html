@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player for MKV Videos</title>
+
+</head>
+
+<body>
+
+
+    <video id="video" width="100%" height="705px" autoplay controls ">
+    <source class="active " src="http://127.0.0.1:9001/1f9536OLJZnG73_b2sPYnYW_7g_PJrb8S" type='video/mp4'></source>
+    <source  src="http://127.0.0.1:9001/1f9536OLJZnG73_b2sPYnYW_7g_PJrb8S" type='video/mp4'></source>
+    <source  src="http://127.0.0.1:9001/1f9536OLJZnG73_b2sPYnYW_7g_PJrb8S" type='video/mp4'></source>
+    
+
+    </video>
+    
+</body>
+
+<script>
+    var videoElement = document.getElementById('video');
+    videoElement.addEventListener('ended', function() {
+        var activeSource = document.querySelector('#video source.active');
+        var nextSource = document.querySelector('#video source.active+source') ||
+            document.querySelector('#video source:first-child');
+
+        // deactivate current source, and activate the next one
+        activeSource.className = '';
+        nextSource.className = 'active';
+
+        // update the video source and start playback
+        videoElement.src = nextSource.src;
+        
+        videoElement.play();
+
+        function nextbt(params) {
+            var activeSource = document.querySelector('#video source.active');
+            var nextSource = document.querySelector('#video source.active+source') ||
+                document.querySelector('#video source:first-child');
+
+            // deactivate current source, and activate the next one
+            activeSource.className = '';
+            nextSource.className = 'active';
+
+            // update the video source and start playback
+            videoElement.src = nextSource.src;
+            videoElement.play();
+
+        }
+    });
+</script>
+
+</html>
